@@ -1,0 +1,29 @@
+{
+  "name": "graphql-test",
+  "version": "1.0.0",
+  "description": "Test GraphQL in node.js server",
+  "main": "build/index.js",
+  "scripts": {
+    "dev": "nodemon",
+    "test": "NODE_ENV=test mocha --require=ts-node/register --recursive --exit 'src/**/*.spec.ts'",
+    "compile": "rm -rf build/* && tsc"
+  },
+  "author": "Eduardo Chiaro",
+  "license": "ISC",
+  "dependencies": {
+    "@types/bcryptjs": "^2.4.1",
+    "@types/jsonwebtoken": "^7.2.8",
+    "@types/lodash": "^4.14.116",
+    "@types/mongoose": "^5.2.10",
+    "@types/graphql": "^14.0.5",
+    "apollo-server": "^2.3.1",
+    "graphql": "^14.0.0",
+    "graphql-tools": "^4.0.3",
+    "mongoose": "^5.4.4",
+    "ts-node": "^7.0.1",
+    "typescript": "^3.2.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9"
+  }
+}
