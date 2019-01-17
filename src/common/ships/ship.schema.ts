@@ -30,6 +30,7 @@ export const shipTypeDefs = `
     name: String
     class: String
     code: String
+    shipclassId: String
   }
   # Extending the root Mutation type.
   extend type Mutation {

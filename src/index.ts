@@ -9,7 +9,7 @@ import { shipclassResolvers, shipclassTypeDefs } from './common/shipclass/shipcl
  */
 mongoose.connect(
   // you can use 'mongodb://localhost/graphql-demo' in development
-  'mongodb://localhost:32768/graphql-demo',
+  'mongodb://localhost:32774/graphql-demo',
   { useNewUrlParser: true }
 );
 

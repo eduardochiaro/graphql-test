@@ -5,6 +5,11 @@ import mongoose from 'mongoose';
  * validate the data sent to our database.
  */
 const shipclassSchema = new mongoose.Schema({
+  id: {
+    type: String,
+    required: true,
+    unique: true
+  },
   name: {
     type: String,
     required: true,

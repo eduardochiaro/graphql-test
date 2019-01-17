@@ -10,6 +10,7 @@ export const shipclassTypeDefs = `
     year: Int
   }
   input ShipclassInput {
+    id: String
     name: String
     year: Int
   }
