@@ -1,13 +1,15 @@
 import { ApolloServer } from 'apollo-server';
 import { makeExecutableSchema } from 'graphql-tools';
 import mongoose from 'mongoose';
+import { merge } from 'lodash';
 import { shipResolvers, shipTypeDefs } from './common/ships/ship.schema';
+import { shipclassResolvers, shipclassTypeDefs } from './common/shipclass/shipclass.schema';
 /**
  * Connect to the mongodb database using the mongoose library.
  */
 mongoose.connect(
   // you can use 'mongodb://localhost/graphql-demo' in development
-  'mongodb://localhost/graphql-demo',
+  'mongodb://localhost:32768/graphql-demo',
   { useNewUrlParser: true }
 );
 
@@ -29,8 +31,8 @@ const rootTypeDefs = `
  * resolvers.
  */
 const schema = makeExecutableSchema({
-    typeDefs: [rootTypeDefs, shipTypeDefs],
-    resolvers: shipResolvers as any,
+    typeDefs: [rootTypeDefs, shipTypeDefs, shipclassTypeDefs],
+    resolvers: merge(shipResolvers, shipclassResolvers) as any,
   });
 
 /**

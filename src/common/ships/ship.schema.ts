@@ -1,4 +1,5 @@
 import Ship from './ship.model';
+import Shipclass from '../shipclass/shipclass.model';
 
 /**
  * Export a string which contains our GraphQL type definitions.
@@ -8,8 +9,10 @@ export const shipTypeDefs = `
   type Ship {
     id: ID!
     name: String!
-    class: String!
     code: String
+
+    shipclassId: String
+    shipclass: Shipclass
   }
   input ShipFilterInput {
     limit: Int
@@ -69,6 +72,15 @@ export const shipResolvers = {
     deleteShip: async (_, { id }) => {
       const ship: any = await Ship.findByIdAndRemove(id);
       return ship ? ship.toGraph() : null;
+    },
+  },
+  Ship: {
+    async shipclass(ship: { shipclassId: string }) {
+      if (ship.shipclassId) {
+        const shipclass: any = await Shipclass.findById(ship.shipclassId);
+        return shipclass.toGraph();
+      }
+      return null;
     },
   },
 };

@@ -1,36 +1,30 @@
 import mongoose from 'mongoose';
 
 /**
- * Here is the our ship schema which will be used to
+ * Here is the our user schema which will be used to
  * validate the data sent to our database.
  */
-const shipSchema = new mongoose.Schema({
+const shipclassSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
-    unique: true,
   },
-  shipclassId: {
-    type: mongoose.Schema.Types.ObjectId,
-    // this must match the name we assigned to the workspace model
-    ref: 'Shipclass',
-  },
-  code: {
-    type: String,
+  year: {
+    type: Number,
   },
 });
 
 /**
  * This property will ensure our virtuals (including "id")
- * are set on the ship when we use it.
+ * are set on the user when we use it.
  */
-shipSchema.set('toObject', { virtuals: true });
+shipclassSchema.set('toObject', { virtuals: true });
 
 /**
  * This is a helper method which converts mongoose properties
  * from objects to strings, numbers, and booleans.
  */
-shipSchema.method('toGraph', function toGraph(this: any) {
+shipclassSchema.method('toGraph', function toGraph(this: any) {
   return JSON.parse(JSON.stringify(this));
 });
 
@@ -38,4 +32,4 @@ shipSchema.method('toGraph', function toGraph(this: any) {
  * Finally, we compile the schema into a model which we then
  * export to be used by our GraphQL resolvers.
  */
-export default mongoose.model('Ship', shipSchema);
+export default mongoose.model('Shipclass', shipclassSchema);
